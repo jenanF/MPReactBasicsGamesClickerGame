@@ -53,6 +53,21 @@ h2 {
 
 .axebutton {
   background-image: url(./images/axe.png);
+  background-size: cover;
   height: 300px;
   width: 300px;
+  background-color: transparent;
+
+
+}
+
+
+.upgradebutton {
+
+  height: 40px;
+  width: fit-content;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-family: monospace;
 }
