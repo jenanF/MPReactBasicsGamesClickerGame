@@ -10,6 +10,9 @@ import helperImage from './images/lumberjack.png';
 import React, { useState } from 'react';
 
 
+// Very Basic Game
+// Apologies for the poor organization project was implemented quickly with just a few hours due to midterms :)
+
 let woods = 0;
 let houses = 0;
 let toolsUpgrade = "upgrade";
