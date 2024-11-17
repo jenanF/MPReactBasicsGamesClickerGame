@@ -11,7 +11,7 @@ import React, { useState } from 'react';
 
 
 // Very Basic Game
-// Apologies for the poor organization project was implemented quickly with just a few hours due to midterms :)
+// Apologies for the poor organization, the project was implemented quickly with just a few hours due to midterms :)
 
 let woods = 0;
 let houses = 0;
