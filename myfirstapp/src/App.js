@@ -6,7 +6,9 @@ import axeIron from "./images/ironaxe.png";
 import axeGold from "./images/goldaxe.png";
 import axeDimond from "./images/silveraxe.png";
 import axeTitanium from "./images/titaniumaxe.png"
+import helperImage from './images/lumberjack.png';
 import React, { useState } from 'react';
+
 
 let woods = 0;
 let houses = 0;
@@ -19,38 +21,13 @@ let workinng = false;
 
 
 
-
-
-// function tools() {
-
-//   if (houses >= 5) {
-//     showButton = true;
-//     toolsUpgrade = "upgrade to iron axe x2 faster";
-
-//   } else if (houses >= 20) {
-//     showButton = true;
-//     toolsUpgrade = "upgrade to golden axe x5 faster";
-
-//   } else if (houses >= 50) {
-//     showButton = true;
-//     toolsUpgrade = "upgrade to dimond axe x12 faster";
-
-//   } else {
-//     return;
-//   }
-
-//   showButton = !showButton;
-// }
-
-
-
 function App() {
 
   const [woodcounter, setwood] = useState(woods);
   const [housecounter, setHouses] = useState(houses);
   const [upgradeTool, setTool] = useState(toolsUpgrade);
   const [imgUpdate, setImg] = useState(axeImg);
-  const [helper, setHelper] = useState(help);
+  //const [helper, setHelper] = useState(help);
 
   const increasing = () => {
 
@@ -72,31 +49,27 @@ function App() {
     if (woodcounter % 5 === 0 && woodcounter > 4) {
       setHouses(houses => houses + 1);
       console.log(houses);
-    }
-    // } else if (woodcounter > woodcounter + 4) {
-    //   setHouses(houses => houses + 1);
-    // } 
-    else {
+    } else {
       return;
     }
 
-    if (housecounter > 1 && housecounter < 3) {
+    if (housecounter > 1 && housecounter < 3 && axeImg != axeIron) {
       setTool("upgrade to iron axe x2 faster! cost = 5 woods");
       // axeImg = axeIron;
       showButton = true;
 
-    } else if (housecounter > 5 && housecounter < 7) {
+    } else if (housecounter > 5 && housecounter < 7 && axeImg != axeGold) {
       showButton = true;
       setTool(toolsUpgrade => toolsUpgrade = "upgrade to golden axe x5 faster! cost = 20 woods");
       //axeImg = axeGold;
 
-    } else if (housecounter > 9 && housecounter < 11) {
+    } else if (housecounter > 9 && housecounter < 11 && axeImg != axeDimond) {
       showButton = true;
       setTool(toolsUpgrade => toolsUpgrade = "upgrade to dimond axe x12 faster! cost = 3 houses");
       //axeImg = axeDimond;
 
 
-    } else if (housecounter > 15) {
+    } else if (housecounter > 15 && axeImg != axeTitanium) {
       showButton = true;
       setTool(toolsUpgrade => toolsUpgrade = "upgrade to Titanium axe x50 faster!! cost = 100 woods & 5 houses");
       //axeImg = axeDimond;
@@ -109,22 +82,10 @@ function App() {
       return;
     }
 
-
-    // if (woods % 5 === 0) {
-    //   setHouses(housecounter => houses + 1);
-    //   console.log(houses);
-    // }
   };
 
-  // for (let i = 5; i >= 5;) {
-  //   if (woods % 5) {
-  //     houses++;
-  //   } else {
-  //     return;
-  //   }
-  // }
 
-  const tools = () => {
+  const updatTools = () => {
 
     if (upgradeTool === "upgrade to iron axe x2 faster! cost = 5 woods") {
       axeImg = axeIron;
@@ -145,21 +106,6 @@ function App() {
       setHouses(housecounter => housecounter -= 5);
     }
 
-    // if (housecounter > 4) {
-    //   setTool(toolsUpgrade => toolsUpgrade = "upgrade to iron axe x2 faster");
-    //   showButton = true;
-
-    // } else if (housecounter >= 20) {
-    //   showButton = true;
-    //   setTool(toolsUpgrade => toolsUpgrade = "upgrade to golden axe x5 faster");
-
-    // } else if (housecounter >= 50) {
-    //   showButton = true;
-    //   setTool(toolsUpgrade => toolsUpgrade = "upgrade to dimond axe x12 faster");
-
-    // } else {
-    //   return;
-    // }
 
     showButton = !showButton;
 
@@ -172,7 +118,7 @@ function App() {
       return (
         <div style={{ marginTop: 10 }}>
 
-          <button className='upgradebutton' onClick={tools}>{upgradeTool}</button>
+          <button className='upgradebutton' onClick={updatTools}>{upgradeTool}</button>
         </div>
       );
     } else {
@@ -189,6 +135,16 @@ function App() {
     setwood(woodcounter => woodcounter -= 50);
 
     helpButton = false;
+  }
+
+  function DisplayHelperImage() {
+    if (helpButton == false && workinng == true) {
+      return (
+        <img className='helperimage' height={90} width={90} src={helperImage} ></img>
+      )
+    } else {
+      return;
+    }
   }
 
   function ShowHelp() {
@@ -218,13 +174,15 @@ function App() {
         }
         <div style={{ display: 'flex', flexDirection: 'row' }}>
 
+          <DisplayHelperImage />
+
           <div style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', justifyContent: 'center' }}>
             <img src={wood} width={100} height={100}></img>
             <h2>{woodcounter}</h2>
           </div>
 
 
-          <div style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', justifyContent: 'center', marginLeft: 25 }}>
+          <div className='pointsdiv' style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', justifyContent: 'center', marginLeft: 25 }}>
             <img src={house} width={80} height={80}></img>
             <h2>{housecounter}</h2>
           </div>
