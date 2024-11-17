@@ -58,7 +58,6 @@ h2 {
   width: 300px;
   background-color: transparent;
 
-
 }
 
 
@@ -70,4 +69,15 @@ h2 {
   background-color: black;
   color: white;
   font-family: monospace;
+}
+
+.helperbutton {
+  height: 40px;
+  width: fit-content;
+  padding: 10px;
+  background-color: blue;
+  color: white;
+  font-family: monospace;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
